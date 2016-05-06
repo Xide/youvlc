@@ -1,1 +1,1 @@
-sed "s#@@HERE@@#`pwd`#g"
+sed -i  "s#@@HERE@@#`pwd`#g" app_manifest.json 
