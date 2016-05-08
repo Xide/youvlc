@@ -40,7 +40,7 @@ echo "Native messaging host $HOST_NAME has been installed."
 
 echo
 echo "Please install extension and copy paste ID below."
-read -p "Extension ID: " extId
+read -p "Extension ID: " EXT_ID
 
 # Update host path in the manifest (copying sample).
-sed -i "s#EXTENSION_ID#$extId#g" "$DIR/app_manifest.json"
+sed -i "s#EXTENSION_ID#$EXT_ID#g" "$DIR/app_manifest.json"

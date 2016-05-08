@@ -69,13 +69,12 @@ function updateMenus() {
 // Echoing allowed_origin to add into app_manifest on first run to make it work
 chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason == "install") {
-    prompt('', 'chrome-extension://' + chrome.runtime.id + '/');
+    prompt('YouVLC extension ID (copy/paste in install script/app_manifest.json)', chrome.runtime.id);
   }
 });
 
 
 chrome.storage.onChanged.addListener(function (changes) {
-  console.log('new settings: ', changes);
   updateMenus();
 });
 
