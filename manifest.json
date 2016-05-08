@@ -1,20 +1,24 @@
 {
   "manifest_version": 2,
-
   "name": "youvlc",
   "description": "open your Youtube videos with VLC",
   "version": "1.0",
-
   "permissions": [
     "contextMenus",
-    "nativeMessaging"
-    ],
-
+    "nativeMessaging",
+    "storage"
+  ],
   "background": {
-    "scripts": ["vlc.js"]
+    "scripts": [
+      "youvlc.js"
+    ]
   },
-  
+  "options_page": "settings/index.html",
+  "options_ui": {
+    "page": "settings/index.html",
+    "chrome_style": true
+  },
   "icons": {
-    "16": "icon_small.png"
+    "16": "icons/small.png"
   }
 }       

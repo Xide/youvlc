@@ -1,18 +1,23 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import sys
 import json
 import os
+import struct
 
-#Initial block size, 4 on my laptop so fuck off nice code
-sys.stdin.read(4)
+# Read the message length (first 4 bytes).
+text_length_bytes = sys.stdin.buffer.read(4)
+# Unpack message length as 4 byte integer.
+text_length = struct.unpack('i', text_length_bytes)[0]
+# Read the text of the message.
+text = sys.stdin.buffer.read(text_length).decode('utf-8')
+# Decode data to JSON
+json = json.loads(text)
 
-# Horrible code, yet a simple JSON load inf loop :/
-# TODO fix this by corrctly parsing size (lines above)
-res = ''
-while '}' not in res:
-  chunk = sys.stdin.read(1)
-  res += chunk
+command = [
+    'vlc --one-instance %s' % json['url'],
+    '-%s-playlist-enqueue' % '-no' if not json['queue'] else '',
+    '&'
+]
 
-res = json.loads(res)
-os.system('vlc %s &' % res['text'])
+os.system(''.join(command))
