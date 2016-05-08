@@ -1,9 +1,9 @@
 {
     "name": "youvlc",
     "description": "vlc scipt opener",
-    "path": "@@HERE@@/link_opener.py",
+    "path": "HOST_PATH/link_opener.py",
     "type": "stdio",
     "allowed_origins": [
-      "chrome-extension://hacjcckccijamnapcgngifoejacfkfni/"
+      "chrome-extension://EXTENSION_ID/"
     ]
 }
