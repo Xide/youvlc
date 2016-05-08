@@ -14,10 +14,13 @@ text = sys.stdin.buffer.read(text_length).decode('utf-8')
 # Decode data to JSON
 json = json.loads(text)
 
-command = [
+command = ' '.join([
     'vlc --one-instance %s' % json['url'],
-    '-%s-playlist-enqueue' % '-no' if not json['queue'] else '',
+    '-%s-playlist-enqueue' % ('-no' if not json['queue'] else ''),
     '&'
-]
+])
 
-os.system(''.join(command))
+with open('/tmp/youvlc_command', 'w') as f:
+    f.write(command)
+
+os.system(command)
